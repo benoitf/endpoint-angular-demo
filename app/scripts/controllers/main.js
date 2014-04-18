@@ -35,7 +35,7 @@ angular.module('googleCloudEndpointsApp')
     var item = $scope.items[indexId];
     console.log("removing item with id" + item.id);
 
-         $http({method: 'DELETE', url: '/_ah/api/helloworld/v1/greeting/' + item.id}).
+         $http({method: 'DELETE', url: 'https://1-dot-wise-cycling-550.appspot.com/_ah/api/helloworld/v1/greeting/' + item.id}).
     success(function(data, status, headers, config) {
       console.log("successfuly remove item with id" + item.id);
       $scope.listItems();
