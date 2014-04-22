@@ -9,7 +9,7 @@ angular.module('googleCloudEndpointsApp')
 
   $scope.listItems = function() {
     // setup items
-    gapi.client.helloworld.list().execute(function(resp) {
+    gapi.client.helloworldsql.list().execute(function(resp) {
       $scope.items = resp.items;
       // apply update
       $scope.$apply();
@@ -24,8 +24,9 @@ angular.module('googleCloudEndpointsApp')
       'author': author,
       'content': content
     };
+    console.log("Adding item with author" + author + "and content=" + content);
 
-    gapi.client.helloworld.add(item).execute(function(resp) {
+    gapi.client.helloworldsql.add(item).execute(function(resp) {
       $scope.listItems();
     });
   };
@@ -35,18 +36,13 @@ angular.module('googleCloudEndpointsApp')
     var item = $scope.items[indexId];
     console.log("removing item with id" + item.id);
 
-         $http({method: 'DELETE', url: 'https://1-dot-wise-cycling-550.appspot.com/_ah/api/helloworld/v1/greeting/' + item.id}).
-    success(function(data, status, headers, config) {
-      console.log("successfuly remove item with id" + item.id);
-      $scope.listItems();
-    }).
-    error(function(data, status, headers, config) {
-console.log("error while removing item with id" + item.id);
-    });
+    var entry = {
+      'id': item.id
+    };
 
-    //gapi.client.helloworld.remove("" + item.id).execute(function(resp) {
-    //  $scope.listItems();
-    //});
+    gapi.client.helloworldsql.remove(entry).execute(function(resp) {
+      $scope.listItems();
+    });
   };
 
 });
