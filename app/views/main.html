@@ -1,51 +1,57 @@
 <div class="header">
-  <h3 class="text-muted"><img src="images/Logo_Google_2013_Official.svg" width="250px" alt="Google Logo">
-    Codenvy Demo</h3>
+  <div class="row">
+    <div class="col-md-6 text-center"><img src="images/Logo_Google_2013_Official.svg" width="250px" alt="Google Logo"></div>
+    <div class="col-md-6 text-center"><img src="images/logo-codenvy.png" width="250px" alt="Codenvy Logo"></div>
   </div>
 
-
-
-
-
-  <div class="container" ng-controller="MainCtrl">
-    <h2>Items&nbsp;<span class="badge">{{items.length}}</span></h2>
-
-    <form class="form-horizontal" role="form">
-      <div class="form-group">
-        <label for="author" class="col-sm-2 control-label">Author</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="author" placeholder="Author" ng-model="authorName">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="content" class="col-sm-2 control-label">Content</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="content" placeholder="Content" ng-model="contentValue">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-success" ng-click="addItem(authorName, contentValue)">Add item</button>
-        </div>
-      </div>
-    </form>
-
-    <ul class="list-unstyled">
-      <li ng-repeat="item in items">
-        <form role="form">
-          <input type="hidden" id="idItem" ng-model="idItem" value="{{item.id}}">
-          <span class="h6"><button type="submit" class="btn btn-danger btn-xs" ng-click="removeItem($index)"><span class="h5"><span class="glyphicon glyphicon-trash" /></span></button>
-          &nbsp;&nbsp;</span><span class="label label-info"><span class="glyphicon glyphicon-user"></span>&nbsp;{{item.author}}</span> {{item.content}}
-        </form>
-      </li>
-    </ul>
-
-
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 text-center"><h3 class="text-muted">Codenvy Demo</h3></div>
   </div>
+</div>
 
 
 
 
-  <div class="footer">
-    <p>Scaffolding : ♥ from the Yeoman team</p>
-  </div>
+
+<div class="container" ng-controller="MainCtrl">
+  <h2>Factories Library&nbsp;<span class="badge">{{items.length}}</span></h2>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="owner" class="col-sm-2 control-label">Owner</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="owner" placeholder="Owner" ng-model="ownerName">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="content" class="col-sm-2 control-label">Factory URL</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="content" placeholder="Content" ng-model="contentValue">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success" ng-click="addItem(ownerName, contentValue)">Add Factory</button>
+      </div>
+    </div>
+  </form>
+
+  <ul class="list-unstyled">
+    <li ng-repeat="item in items">
+      <form role="form">
+        <input type="hidden" id="idItem" ng-model="idItem" value="{{item.id}}">
+        <span class="h6"><button type="submit" class="btn btn-danger btn-xs" ng-click="removeItem($index)"><span class="h5"><span class="glyphicon glyphicon-trash" /></span></button>
+        &nbsp;&nbsp;</span><span class="label label-info"><span class="glyphicon glyphicon-user"></span>&nbsp;{{item.author}}</span> {{item.content}}
+      </form>
+    </li>
+  </ul>
+
+
+</div>
+
+
+
+
+<div class="footer">
+  <p>Scaffolding : ♥ from the Yeoman team</p>
+</div>
