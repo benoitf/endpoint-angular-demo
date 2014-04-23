@@ -1,15 +1,12 @@
 'use strict';
 
 angular.module('googleCloudEndpointsApp')
-.controller('MainCtrl', function ($scope, $http) {
-
+.controller('MainCtrl', function ($scope, $http, $resource) {
   $scope.items = [];
-
-
 
   $scope.listItems = function() {
     // setup items
-    gapi.client.helloworldsql.list().execute(function(resp) {
+    gapi.client.factory.list().execute(function(resp) {
       $scope.items = resp.items;
       // apply update
       $scope.$apply();
@@ -19,14 +16,14 @@ angular.module('googleCloudEndpointsApp')
   // List items by default
   $scope.listItems();
 
-  $scope.addItem = function(author, content) {
+  $scope.addItem = function(owner, url) {
     var item = {
-      'author': author,
-      'content': content
+      'owner': owner,
+      'url': url
     };
-    console.log("Adding item with author" + author + "and content=" + content);
+    console.log("Adding item with owner" + owner + "and url " + url);
 
-    gapi.client.helloworldsql.add(item).execute(function(resp) {
+    gapi.client.factory.add(item).execute(function(resp) {
       $scope.listItems();
     });
   };
@@ -39,10 +36,16 @@ angular.module('googleCloudEndpointsApp')
     var entry = {
       'id': item.id
     };
-
-    gapi.client.helloworldsql.remove(entry).execute(function(resp) {
+    
+    // using resource service
+    var factory = $resource('https://1-dot-wise-cycling-550.appspot.com/_ah/api/factory/v1/factory/:factoryId', {factoryId:item.id});
+    factory.delete( function() {
       $scope.listItems();
     });
+
+    //gapi.client.factory.remove(entry).execute(function(resp) {
+    //  $scope.listItems();
+    //});
   };
 
 });
