@@ -1,5 +1,5 @@
-endpoint-angular-demo
-=====================
+AngularJS Google Endpoint demo
+==============================
 
 
 Example of AngularJS application that is using google endpoints
