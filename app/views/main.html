@@ -14,7 +14,7 @@
 
 
 <div class="container" ng-controller="MainCtrl">
-  <h2>Factories Library&nbsp;<span class="badge">{{items.length}}</span></h2>
+  <h2>Factories Library google demo&nbsp;<span class="badge">{{items.length}}</span></h2>
 
   <form class="form-horizontal" role="form">
     <div class="form-group">
@@ -41,7 +41,7 @@
       <form role="form">
         <input type="hidden" id="idItem" ng-model="idItem" value="{{item.id}}">
         <span class="h6"><button type="submit" class="btn btn-danger btn-xs" ng-click="removeItem($index)"><span class="h5"><span class="glyphicon glyphicon-trash" /></span></button>
-        &nbsp;&nbsp;</span><span class="label label-info"><span class="glyphicon glyphicon-user"></span>&nbsp;{{item.owner}}</span> {{item.url}}
+        &nbsp;&nbsp;</span><span class="label label-info"><span class="glyphicon glyphicon-user"></span>&nbsp;{{item.owner}}</span> {{item.url}} with id {{item.id}}
       </form>
     </li>
   </ul>
